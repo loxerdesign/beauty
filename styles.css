@@ -1,0 +1,221 @@
+/* إعادة ضبط الهوامش والحشو */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    color: white;
+    direction: rtl;
+    background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+    overflow: auto; /* Allow scrolling when necessary */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* خلفية النجوم */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* تصميم النجوم باستخدام صورة PNG */
+.star {
+    position: absolute;
+    width: 20px; /* حجم النجمة */
+    height: 20px;
+    background: url('star.png') no-repeat center center; /* تعيين صورة النجمة */
+    background-size: contain; /* التأكد من أن الصورة تناسب العنصر */
+    animation: twinkle 2s infinite alternate ease-in-out, moveStars 10s infinite linear;
+}
+
+/* تأثير الوميض */
+@keyframes twinkle {
+    0% { opacity: 0.5; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* تحريك النجوم في السماء */
+@keyframes moveStars {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); } /* تتحرك للأعلى */
+    100% { transform: translateY(0px); } /* تعود للوضع الأصلي */
+}
+
+/* توزيع النجوم عشوائيًا */
+.stars .star:nth-child(1) { top: 5%; left: 10%; animation-delay: 0s; }
+.stars .star:nth-child(2) { top: 15%; left: 30%; animation-delay: 0.5s; }
+.stars .star:nth-child(3) { top: 25%; left: 50%; animation-delay: 1s; }
+.stars .star:nth-child(4) { top: 40%; left: 70%; animation-delay: 1.5s; }
+.stars .star:nth-child(5) { top: 60%; left: 20%; animation-delay: 2s; }
+.stars .star:nth-child(6) { top: 70%; left: 80%; animation-delay: 2.5s; }
+.stars .star:nth-child(7) { top: 85%; left: 45%; animation-delay: 3s; }
+.stars .star:nth-child(8) { top: 90%; left: 90%; animation-delay: 3.5s; }
+
+/* تحريك النجوم */
+@keyframes fall {
+    from {
+        transform: translate3d(100vw, 0, 0);
+    }
+    to {
+        transform: translate3d(-30vw, 100vh, 0);
+    }
+}
+
+@keyframes tail-fade {
+    0%, 50% {
+        width: 6em;
+        opacity: 1;
+    }
+    70%, 80% {
+        width: 0;
+        opacity: 0.4;
+    }
+    100% {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+/* التصميم العام */
+.container {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* البانر */
+.banner {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.banner img {
+    top: 100px;
+    width: 80%; /* تصغير الحجم إلى 80% */
+    max-width: 600px; /* الحد الأقصى لحجم الصورة */
+    border-radius: 15px;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #ffd700;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* الصورة الشخصية والاسم */
+.profile {
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid #ffd700;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.name {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+}
+
+/* الروابط */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.link {
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-glass {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    color: #ffffff;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 215, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+}
+/* تخصيص تصميم الفوتر */
+.footer {
+    color: #fff;
+    padding: 30px 0;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.footer h5 {
+    color: #f39c12;
+    margin-bottom: 15px;
+}
+
+.footer p,
+.footer a {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer .text-center {
+    margin-top: 20px;
+}
+
+/* تحسين التصميم على الشاشات الصغيرة */
+@media (max-width: 767px) {
+    .footer .col-md-4 {
+        margin-bottom: 20px;
+    }
+}
+
+/* تخصيص اللون عند التمرير على الروابط */
+.footer a:hover {
+    color: #f39c12;
+}
