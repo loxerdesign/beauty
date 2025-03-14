@@ -11,21 +11,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Bio Link</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-</head>
 <body>
     <!-- خلفية النجوم -->
     <div class="stars">
@@ -76,14 +61,12 @@
         <div class="star"></div>
         <div class="star"></div>
         <div class="star"></div>
-        <div class="star"></div>
     </div>
 
-<body>
     <div class="container mt-5">
         <h2 class="text-center">حجز موعد في My Beauty Spa</h2>
 
-        <form action="reservation.php" method="POST" id="reservationForm">
+        <form id="reservationForm">
             <!-- اختيار الصنف -->
             <div class="mb-3">
                 <label for="category" class="form-label">اختر الصنف</label>
@@ -136,6 +119,38 @@
         </form>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>My Beauty Spa</h5>
+                    <p>تجربة فريدة من نوعها في الجمال والراحة.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>روابط سريعة</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">الصفحة الرئيسية</a></li>
+                        <li><a href="#">الخدمات</a></li>
+                        <li><a href="reservation.html">حجز الموعد</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>اتصل بنا</h5>
+                    <ul class="list-unstyled">
+                        <li>الهاتف: <a href="tel:+212617885997">+212617885997</a></li>
+                        <li>البريد الإلكتروني: <a href="mailto:info@mybeautyspa.com">info@mybeautyspa.com</a></li>
+                        <li>العنوان: طنجة، المغرب</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <p>&copy; 2025 My Beauty Spa. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -186,38 +201,33 @@
         window.addEventListener('DOMContentLoaded', function () {
             document.getElementById('category').dispatchEvent(new Event('change'));
         });
+
+        // إرسال النموذج عبر واتساب
+        document.getElementById('reservationForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const category = document.getElementById('category').value;
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            const whatsappMessage = `
+                حجز موعد جديد:
+                - الصنف: ${category}
+                - الخدمة: ${service}
+                - التاريخ: ${date}
+                - الوقت: ${time}
+                - الاسم: ${name}
+                - الهاتف: ${phone}
+                - الرسالة: ${message || "لا توجد رسالة"}
+            `;
+
+            const whatsappUrl = `https://wa.me/+212617885997?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+        });
     </script>
 </body>
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>My Beauty Spa</h5>
-                <p>تجربة فريدة من نوعها في الجمال والراحة.</p>
-            </div>
-            <div class="col-md-4">
-                <h5>روابط سريعة</h5>
-                <ul class="list-unstyled">
-                    <li><a href="index.html">الصفحة الرئيسية</a></li>
-                    <li><a href="#">الخدمات</a></li>
-                    <li><a href="reservation.html">حجز الموعد</a></li>
-                    <li><a href="#">اتصل بنا</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>اتصل بنا</h5>
-                <ul class="list-unstyled">
-                    <li>الهاتف: <a href="tel:+212617885997">+212617885997</a></li>
-                    <li>البريد الإلكتروني: <a href="mailto:info@mybeautyspa.com"></a></li>
-                    <li>العنوان: طنجة، المغرب</li>
-                </ul>
-            </div>
-        </div>
-        <div class="text-center mt-3">
-            <p>&copy; 2025 My Beauty Spa. جميع الحقوق محفوظة.</p>
-        </div>
-    </div>
-</footer>
-
 </html>
