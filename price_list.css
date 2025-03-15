@@ -6,6 +6,14 @@ body {
     color: white;
     text-align: center;
     padding: 20px;
+    /* تعيين مؤشر الماوس كصورة النجمة */
+    cursor: url('cursor.cur') 16 16, auto;
+    }
+    
+    /* إذا كان المؤشر لا يظهر في بعض العناصر، تأكد من إضافته لكل العناصر */
+    a, button, div, span {
+    cursor: url('cursor.cur') 16 16, auto;
+
 }
 
 .container {
