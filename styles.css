@@ -140,7 +140,7 @@ a, button, div, span {
 }
 
 .name {
-    font-size: 32px;
+    font-size: 25px;
     font-weight: bold;
     margin-top: 10px;
     text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
