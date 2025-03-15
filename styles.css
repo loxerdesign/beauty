@@ -16,7 +16,14 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    /* تعيين مؤشر الماوس كصورة النجمة */
+    cursor: url('cursor.cur') 16 16, auto;
 }
+
+/* إذا كان المؤشر لا يظهر في بعض العناصر، تأكد من إضافته لكل العناصر */
+a, button, div, span {
+    cursor: url('cursor.cur') 16 16, auto;
+}  
 
 
 /* خلفية النجوم */
